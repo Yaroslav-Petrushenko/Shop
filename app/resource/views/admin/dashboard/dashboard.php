@@ -1,0 +1,1 @@
+<?php require('app/resource/views/admin/templates/header.php'); ?>

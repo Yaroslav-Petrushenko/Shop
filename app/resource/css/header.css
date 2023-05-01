@@ -1,0 +1,276 @@
+html {
+    font-size: 1px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body.lock {
+    overflow: hidden;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 90%;
+    /* +media(1270)
+        max-width: 1140rem */
+}
+
+.flex {
+    display: flex;
+}
+
+ul {
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    display: inline-block;
+    list-style: none;
+    text-decoration: none;
+}
+
+.overflowX-hidden {
+    overflow-x: hidden;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 90%
+}
+
+.flex {
+    display: flex
+}
+
+ul {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none;
+    padding-left: 0
+}
+
+a {
+    display: inline-block;
+    list-style: none;
+    text-decoration: none
+}
+
+.header {
+    /* background: linear-gradient(90deg, #202020, #100000); */
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    position: relative
+}
+
+.headerHid {
+    transform: translateY(-100%)
+}
+
+.header-section {
+    background-color: rgb(204, 130, 46);
+    width: 100%;
+    left: 0;
+    right: 0;
+    transition: all .2s ease;
+    z-index: 10
+}
+
+.overflow-hidden {
+    overflow-x: hidden
+}
+
+.hambMenu {
+    align-items: center
+}
+
+.top {
+    align-items: center;
+    justify-content: space-between;
+    min-height: 60rem
+}
+
+.logo a {
+    margin: 0;
+    font-size: 24rem;
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Montserrat'
+}
+
+.logo a::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0%;
+    background: #fff;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    height: 1px
+}
+
+.logo a:hover::after {
+    width: 100%
+}
+
+.top-menu {
+    margin: 15rem 0
+}
+
+.top-menu li {
+    margin-right: 0;
+    list-style: none
+}
+
+.top-menu a {
+    font-size: 14rem;
+    letter-spacing: 0;
+    color: #fff;
+    font-weight: 400;
+    font-family: 'Montserrat';
+    padding: 15rem 0;
+    position: relative;
+    transition: all .5s ease
+}
+
+.basket {
+    margin: 15px 0;
+    padding-left: 17rem;
+}
+.basket svg {
+    padding: 10rem 0;
+    width: 20rem;
+    height: 20rem;
+    fill: #fff;
+}
+
+.register a {
+    padding-right: 15rem;
+    font-size: 14rem;
+    letter-spacing: 0;
+    color: #fff;
+    font-weight: 400;
+    font-family: 'Montserrat';
+    padding: 15rem 10rem;
+    position: relative;
+    transition: all .5s ease
+}
+.top-menu a::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0%;
+    background: #fff;
+    transition: all .5s ease;
+    height: 1px
+}
+.top-menu li {
+    margin-right: 30rem;
+}
+
+.top-menu a:hover::after {
+    width: 100%
+}
+
+.top-menu li:last-child {
+    margin-right: 0
+}
+
+.nav-menu {
+    text-align: left;
+    /* display: none */
+}
+@media (max-width: 888px) {
+    .container-form {
+        display: block;
+    }
+}
+.hamburger {
+    display: none;
+    height: 50rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 8
+}
+
+.hamburger span {
+    display: none;
+    margin: 4rem 0;
+    width: 35rem;
+    height: 3rem;
+    background-color: #fff;
+    border-radius: 5rem
+}
+
+.active-burger {
+    display: inline-block;
+    position: absolute
+}
+
+.active-burger a {
+    display: inline-block
+}
+
+.active-burger ul {
+    padding-top: 60rem;
+    padding-right: 30rem;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0;
+    position: fixed;
+    flex-direction: column;
+    align-items: flex-end;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45));
+    background-size: cover;
+    overflow: auto
+}
+
+.logo a {
+    position: relative;
+    margin: 0;
+    font-size: 18rem;
+    color: #fff;
+    font-weight: 800;
+    font-family: 'Caveat', 'cursive';
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+.logo a::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0%;
+    background: #fff;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    height: 1rem
+}
+
+.logo a::after:hover::after {
+    width: 100%
+}
