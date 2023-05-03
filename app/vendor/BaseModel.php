@@ -1,5 +1,4 @@
 <?php
-    // require_once 'app/vendor/Db.php';
     namespace app\vendor;
 
     use ReflectionClass;
@@ -62,23 +61,35 @@
             $stmt = $builder->prepare("SELECT * FROM magazine_db.$tableName WHERE $primaryColumnName = $id_entity");
             $stmt->execute();
             $item = $stmt->fetch();
-            // var_dump($item);
             return $item;
         }
 
-        public function insert($data)
+        public function insert(array $data)
         {
             $table = $this->properties['table'];
+            $primaryKey = $this->properties['primaryKey'];
             $fields = $this->properties['fields'];
-            $params = implode(', :', $fields);
-            $bParams = ':' . implode(', :', $fields);
-            $sql = 'INSERT INTO ' . $this->nameDataBase.$table ($params) . ' VALUE ' . ($bParams);
-            // $fields = ['id_user', 'first_name', 'last_name', 'phone', 'id_status'];
+            // Clean $primaryKey from $fields
+            $fields = array_flip($fields);
+            unset($fields[$primaryKey]);
+            $fields = array_flip($fields);
 
+            $dbFields = implode(', ', $fields);
+            $postFields = ':' . implode(', :', $fields);
+
+            $sql = 'INSERT INTO ' . $this->nameDataBase . '.' . $table . ' (' . $dbFields . ')'. ' VALUES (' . $postFields . ')';
             $stmt = $this->builder()
-                    ->prepare($sql)
-                    ->execute($data);
-            var_dump($stmt);
+                        ->prepare($sql)
+                        ->execute($data);
+        }
+
+        public function update(array $data, int $id)
+        {
+            $table = $this->properties['table'];
+            $primaryKey = $this->properties['primaryKey'];
+            $fields = $this->properties['fields'];
+
+            
         }
     }
 

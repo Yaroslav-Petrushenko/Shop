@@ -1,4 +1,4 @@
-<?php require('app/resource/views/admin/temlates/header.php'); ?>
+<?php require_once(__DIR__ . '/../../temlpates/header.php'); ?>
 
 <div class="contacts" id="contact">
     <h2>Sign Up</h2>

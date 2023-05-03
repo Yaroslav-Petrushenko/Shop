@@ -1,0 +1,215 @@
+.headerSect {
+    /* background: #000; */
+}
+
+.yearOfCol {
+    /* width: 100%; */
+    position: relative;
+}
+
+.yearSeason {
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    left: 0;
+    right: 0;
+
+}
+
+.yearSeason h1 {
+    font-size: 52px;
+}
+
+.yearSeason a {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #474A51;
+    background-color: #DDE8F6;
+    border: 1px solid #DDE8F6;
+    padding: 15rem 55rem;
+}
+
+.yearOfCol img {
+    width: 100%;
+    /* Максимальна ширина картинки */
+    height: auto;
+    object-fit: cover;
+}
+
+.newCol img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.newLook,
+.sale {
+    position: relative;
+    text-align: center;
+    width: 50%;
+    color: #ffffff;
+}
+
+.newInfo,
+.colInfo {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+}
+
+.newColInf {
+    font-size: 16px;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 15rem 55rem;
+}
+
+.catalogue{
+    padding: 160rem 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.catalogue h2 {
+    font-size: 24px;
+    color: #474A51;
+}
+
+.catalogueImgWork{
+    padding-top: 65rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30rem;
+}
+
+
+.catalogueWork img {
+    width: 100%;
+    object-fit: cover;
+}
+.catalogueWork {
+    padding-bottom: 80rem;
+}
+
+.title{
+    padding-top: 20rem;
+    font-size: 24px;
+    color: #474A51;
+}
+
+.cost {
+    font-size: 16px;
+    color: #474A51;
+}
+
+.lookAll {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #474A51;
+    font-weight: 400;
+    border: 1px solid #474A51;
+    padding: 15rem 55rem;
+}
+
+.lookbook {
+    padding-bottom: 160rem;
+}
+.lookbookImg,
+.lookbookInfo {
+    width: 50%;
+}
+
+.lookbookImg img {
+    width: 100%;
+}
+
+.lookbookInfo h3 {
+    color: #474A51;
+    padding-bottom: 10rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 52px;
+    font-family: 'Instrument Serif', serif;
+
+}
+.lookbookInfo {
+    background-color: #EEEEEE;
+}
+
+.lookCont {
+    padding-left: 110rem;
+    padding-top: 200rem;
+    max-width: 400rem;
+}
+.lookBtn {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #474A51;
+    font-weight: 400;
+    border: 1px solid #474A51;
+    padding: 15rem 55rem;
+}
+.lookInfo,
+.discount {
+    color: #474A51;
+    font-weight: 400;
+    font-size: 16px;
+    padding-bottom: 10rem;
+}
+
+.discount {
+    padding-bottom: 50rem;
+}
+
+.ourInst {
+    text-align: center;
+}
+.ourInst h3 {
+    color: #474A51;
+    font-weight: 400;
+    font-size: 24px;
+    padding-bottom: 30rem;
+}
+.inst {
+    color: #474A51;
+    font-family: 'Instrument Serif', serif;
+    font-weight: 500;
+    font-size: 52px;
+    padding-bottom: 80rem;
+}
+
+.catalogInstModel {
+    width: 100%;
+}
+.instModel {
+    position: relative;
+    width: 25%;
+}
+.instModel img{
+    width: 100%;
+}
+.instModelHover {
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.instModelHover a {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    color: #474A51;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.instModel:hover .instModelHover {
+    /* visibility: visible; */
+    opacity: 1;
+    transition: all .5s ease;
+}

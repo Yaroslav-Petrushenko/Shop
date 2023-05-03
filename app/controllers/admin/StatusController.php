@@ -23,9 +23,30 @@
         {
             $statusModel = new Status();
             if (!empty($this->getPost('name')) && !empty($this->getPost('category'))){
-                $statusModel->incert($this->getPost());
+                $statusModel->insert($this->getPost());
             }
             return $this->actionIndex();
+        }
+
+        public function actionDelete()
+        {
+            
+        }
+
+        public function actionUpdate()
+        {
+            $statusModel = new Status();
+            $request = new Request();
+
+            $id = $this->getPost('id_status');
+
+            $content = [
+                'name' => $this->getPost('name'),
+                'category' => $this->getPost('category')
+            ];
+            
+            if (empty($errors)){
+            }
         }
     }
 

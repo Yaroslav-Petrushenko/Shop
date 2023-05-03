@@ -1,0 +1,35 @@
+footer {
+    padding-top: 100rem;
+    background: #EEEEEE;
+}
+.catalogFooter p,
+.toBuyers p,
+.aboutUs p {
+    padding-bottom: 20rem;
+    color: #474A51;
+    font-weight: 400;
+    font-size: 24px;
+}
+.catalogFooter a,
+.toBuyers a,
+.aboutUs a {
+    padding-bottom: 10rem;
+    color: #474A51;
+    font-weight: 400;
+    font-size: 14px;
+}
+.catalogFooter,
+.toBuyers,
+.aboutUs {
+    display: flex;
+    flex-direction: column;
+    padding-right: 60rem;
+}
+
+.copy {
+    padding-top: 100rem;
+    padding-bottom: 10rem;
+    color: #474A51;
+    font-weight: 400;
+    font-size: 14px;
+}

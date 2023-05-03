@@ -1,4 +1,4 @@
-<?php require('app/resource/views/admin/temlates/header.php'); ?>
+<?php require_once(__DIR__ . '/../../templates/header.php'); ?>
 
 <div class="contacts" id="contact">
     <h2>Log In</h2>
@@ -15,7 +15,7 @@
                 <button class="btn-form" type="submit">Log In</button>
             </div>   
             <div class="btn-section">
-                <button class="btn-form registr" type="submit">Registration</button>
+                <a href="" class="btn-form registr" type="submit">Sign In</a>
             </div>   
         </form>
     </div>

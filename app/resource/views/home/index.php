@@ -1,8 +1,5 @@
-
 <?php
-require('app/resource/views/admin/templates/header.php');
-echo '<pre>';
-var_dump($data['users']);
-
-
+require('app/resource/views/templates/header.php');
+require('app/resource/views/templates/main.php'); 
+require('app/resource/views/templates/footer.php'); 
 ?>
