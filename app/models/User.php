@@ -34,6 +34,26 @@
         {
             $users = $this->getAll();
             return $users;
+
+
+            // foreach ($users as $user) {
+            //     $builder = $this->builder();
+            //     $stmt = $builder->prepare('SELECT total_price FROM ' . $this->dataBaseName . '.orders WHERE id_user = ' . $user['id_user'] . '');
+            //     $stmt->execute();
+            //     $orders[] = $stmt->fetch();
+            // }
+
+            // foreach ($orders as $order) {
+            //     if (!empty($order['total_price'])) {
+            //     foreach ($users as &$user) {
+            //         if ($user['id_user'] === $order['id_user']) {
+            //             $user['total_price'] = $order['total_price'];
+            //         }
+            //     }
+            //     }
+            // }
+            
+            // return $users;
         }
     }
 

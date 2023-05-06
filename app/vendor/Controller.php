@@ -23,19 +23,30 @@
         //     require_once 'app/resource/views/'.$template.'.php';
         // }
 
-        public function getPost($key = '')
+        public function getPost(string $key = null)
         {
 
             $result = [];
 
             if (isset($_POST)) {
-                if (!empty($_POST[$key])) {
-                    $result = $_POST[$key];
-                }
                 $result = $_POST;
+                if (!is_null($key)) {
+                    if (!empty($_POST[$key]) && isset($_POST[$key])) {
+                        $result = $_POST[$key];
+                    } elseif (isset($_POST[$key])){
+                        $result = 'Error undefind key' . $key;
+                    }
+
+                }
             }
 
             return $result;
+        }
+        public function redirect(string $url)
+        {
+            // хедер локейшн виконується зразу, тобто якщо будуть певірки якісь то виконається зразу локейш
+            header('Location: ' .$url);
+            exit;
         }
     }
 

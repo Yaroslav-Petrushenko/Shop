@@ -18,15 +18,31 @@
                 $this->actionLogin();
             }
             
+            
         }
         
-        public function actionLogin(): void
+        public function actionLogin()
         {
             $userModel = new User();
-            // var_dump($userModel->insert());
-            $this->view('admin/login/login');
-            // var_dump()
-            
+    
+            $postData = $this->getPost();
+            $data = [];
+
+            if (isset($_SESSION['users']['admin'])) {
+                header('Location: logout');
+            }
+    
+            if (!empty($postData)) {
+                $errors = $userModel->loginUser($postData);
+                if (!empty($errors)) {
+                    $data['errors'] = $errors;
+                } else {
+                    $data['user'] = $postData;
+                
+                    return $this->actionIndex($data);
+                }
+            }
+            $this->view('admin/login/login');            
         }
 
         public function actionRegister()
@@ -46,6 +62,7 @@
                 }
             }
             $this->view('admin/register/register', $contact);
+            
         }
 
         // public function actionLogOut()

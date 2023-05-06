@@ -63,8 +63,9 @@
             $item = $stmt->fetch();
             return $item;
         }
+        
 
-        public function insert(array $data)
+        public function insert(array $data = [])
         {
             $table = $this->properties['table'];
             $primaryKey = $this->properties['primaryKey'];
@@ -78,9 +79,9 @@
             $postFields = ':' . implode(', :', $fields);
 
             $sql = 'INSERT INTO ' . $this->nameDataBase . '.' . $table . ' (' . $dbFields . ')'. ' VALUES (' . $postFields . ')';
-            $stmt = $this->builder()
-                        ->prepare($sql)
-                        ->execute($data);
+            $this->builder()
+                ->prepare($sql)
+                ->execute($data);
         }
 
         public function update(array $data, int $id)
@@ -89,7 +90,28 @@
             $primaryKey = $this->properties['primaryKey'];
             $fields = $this->properties['fields'];
 
-            
+            $sql = "";
+            foreach ($data as $key => $value) {
+                $sql = "UPDATE $this->nameDataBase.$table SET $key = $value WHERE $primaryKey = $id;";
+            }
+            $this->builder()
+                ->query($sql);
+        }
+
+        public function delete(int $id)
+        {
+            $id = intval($id);
+            $table = $this->properties['table'];
+            $primaryKey = $this->properties['primaryKey'];
+            // $sql = 'DELETE FROM ' . $this->nameDataBase . '.' . $table . ' WHERE ' . $primaryKey = $id;
+            // $sql = "DELETE FROM {$this->nameDataBase}.{$table} WHERE {$primaryKey} = {$id}";
+            // $sql = "DELETE FROM {$this->nameDataBase}.{$table} WHERE {$primaryKey} = {$id}";
+            $sql = 'DELETE FROM magazine_db.'.$table.' WHERE '.$primaryKey .' = '.$id.''; 
+            // var_dump($sql);
+ 
+            $this->builder()
+                ->prepare($sql)
+                ->execute();
         }
     }
 
