@@ -55,15 +55,28 @@
             return $items;
         }
         
-        public function getOne(string $tableName, string $primaryColumnName, int $id_entity)
-        {
-            $builder = $this->builder();
-            $stmt = $builder->prepare("SELECT * FROM magazine_db.$tableName WHERE $primaryColumnName = $id_entity");
-            $stmt->execute();
-            $item = $stmt->fetch();
-            return $item;
-        }
+        // public function getOne(string $tableName, string $primaryColumnName, int $id_entity)
+        // {
+        //     $builder = $this->builder();
+        //     $stmt = $builder->prepare("SELECT * FROM magazine_db.$tableName WHERE $primaryColumnName = $id_entity");
+        //     $stmt->execute();
+        //     $item = $stmt->fetch();
+        //     return $item;
+        // }
         
+        public function getOne(int $id)
+        {
+            $table = $this->properties['table'];
+            $primaryKey = $this->properties['primaryKey'];
+            $fields = $this->properties['fields'];
+
+            $builder = $this->builder();
+            $stmt = $builder->prepare('SELECT ' . implode(', ', $fields) . ' FROM magazine_db.' . $table . ' WHERE ' . $primaryKey . ' = ' . $id . '');
+            $stmt->execute();
+
+            return $stmt->fetch();
+
+        }
 
         public function insert(array $data = [])
         {
@@ -84,30 +97,45 @@
                 ->execute($data);
         }
 
-        public function update(array $data, int $id)
+        // public function update(array $data, int $id)
+        // {
+        //     $table = $this->properties['table'];
+        //     $primaryKey = $this->properties['primaryKey'];
+        //     $fields = $this->properties['fields'];
+
+        //     $sql = "";
+        //     foreach ($data as $key => $value) {
+        //         $sql = "UPDATE $this->nameDataBase.$table SET $key = $value WHERE $primaryKey = $id;";
+        //     }
+        //     $this->builder()
+        //         ->query($sql);
+        // }
+
+        public function update(int $idStatus, array $data)
         {
             $table = $this->properties['table'];
             $primaryKey = $this->properties['primaryKey'];
-            $fields = $this->properties['fields'];
+            unset($data[$primaryKey]);
 
-            $sql = "";
+            $fields = '';
             foreach ($data as $key => $value) {
-                $sql = "UPDATE $this->nameDataBase.$table SET $key = $value WHERE $primaryKey = $id;";
+                $fields .= $key . "='" . $value . "',";
             }
+            $fields = rtrim($fields, ', ');
+
+            $sql = 'UPDATE ' . $this->nameDataBase . '.' . $table . ' SET ' . $fields . ' WHERE ' . $primaryKey . ' = ' . $idStatus . '';
             $this->builder()
-                ->query($sql);
+                ->prepare($sql)
+                ->execute();
         }
+
 
         public function delete(int $id)
         {
             $id = intval($id);
             $table = $this->properties['table'];
             $primaryKey = $this->properties['primaryKey'];
-            // $sql = 'DELETE FROM ' . $this->nameDataBase . '.' . $table . ' WHERE ' . $primaryKey = $id;
-            // $sql = "DELETE FROM {$this->nameDataBase}.{$table} WHERE {$primaryKey} = {$id}";
-            // $sql = "DELETE FROM {$this->nameDataBase}.{$table} WHERE {$primaryKey} = {$id}";
             $sql = 'DELETE FROM magazine_db.'.$table.' WHERE '.$primaryKey .' = '.$id.''; 
-            // var_dump($sql);
  
             $this->builder()
                 ->prepare($sql)

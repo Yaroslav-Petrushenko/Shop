@@ -5,12 +5,9 @@
     <p class="info"></p>
     <div class="container-form wrapper">
         <form action="" class="flex flex-column" id="form" method="post" autocomplete="off">
-            <label for="mailUser" class="label">
-                <input type="mail" for="mailUser" value='' name="email"  placeholder="Your email" class="input" id="email">
-            </label>
-            <label for="mailUser" class="label">
-                <input type="password" for="password" value='' name="password"  placeholder="Password" class="input" id="password">
-            </label>
+            <input type="email" value='<?= $_POST['email'] ?? '' ?>' name="email"  placeholder="Your email" class="input" id="email">
+            
+            <input type="password" value='<?= $_POST['password'] ?? '' ?>' name="password"  placeholder="Password" class="input" id="password">   
             <div class="btn-section ">
                 <button class="btn-form" type="submit">Log In</button>
             </div>   

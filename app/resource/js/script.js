@@ -8,3 +8,4 @@ updatesbtn.forEach(update => {
         })
     }
 })
+

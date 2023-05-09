@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/app/resource/css/register.css">
     <link rel="stylesheet" href="/app/resource/css/main.css">
     <link rel="stylesheet" href="/app/resource/css/footer.css">
+    <link rel="stylesheet" href="/app/resource/css/style.css">
 </head>
 <body>
     <div class="overflow-hidden">

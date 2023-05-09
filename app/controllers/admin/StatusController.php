@@ -30,7 +30,7 @@
             return $this->redirect('../status');
         }
 
-        public function actionChange()
+        public function actionChange() : void
         {
             if (isset($_POST['update'])) {
                 $this->actionUpdate();
@@ -42,18 +42,13 @@
         public function actionUpdate()
         {
             $statusModel = new Status();
-            $request = new Request();
-            
-            $errors = $request->checkUserRegisterForm($this->getPost());
-            if (empty($errors)) {
-                $data = [
+            $data = [
                 'id_status' => $this->getPost('id_status'),
                 'name' => $this->getPost('name'),
                 'category' => $this->getPost('category'),
-                ];
-    
-                $statusModel->update($this->getPost('id_status'), $data);
-            }
+            ];
+
+            $statusModel->update($this->getPost('id_status'), $data);
     
             return $this->redirect('../status');
         }

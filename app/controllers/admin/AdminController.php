@@ -1,5 +1,6 @@
 <?php
 
+
     // namespace app\controllers\admin;
 
     use app\vendor\Controller;
@@ -10,42 +11,43 @@
 
     class AdminController extends Controller
     {
-        public function actionIndex()
-        {
-            if (isset($_SESSION['adminUser'])) {
-                $this->view('admin/dashboard/dashboard');
-            } else {
-                $this->actionLogin();
-            }
-            
-            
-        }
-        
+        // public function actionIndex()
+        // {
+        //     if (isset($_SESSION['adminUser'])) {
+        //         $content = [
+        //             $this->getBaseURL()
+        //         ];
+        //         $this->view('admin/dashboard/dashboard', $content);
+        //     } else {
+        //         $this->actionLogin();
+        //     }
+        // }
+
         public function actionLogin()
         {
-            $userModel = new User();
-    
-            $postData = $this->getPost();
-            $data = [];
-
-            if (isset($_SESSION['users']['admin'])) {
+        // Якщо Адмін вже залогінений адмін, - кидає на Логаут
+            if (isset($_SESSION['user']['id_user'])) {
                 header('Location: logout');
             }
-    
+
+            $userModel = new User();
+
+            $postData = $this->getPost();
+            $data = [];
             if (!empty($postData)) {
                 $errors = $userModel->loginUser($postData);
                 if (!empty($errors)) {
                     $data['errors'] = $errors;
                 } else {
-                    $data['user'] = $postData;
-                
+                    $data['user'] = $_SESSION['user'];
+                    // die;
                     return $this->actionIndex($data);
                 }
             }
-            $this->view('admin/login/login');            
+            $this->view('admin/login/login', $data);
         }
 
-        public function actionRegister()
+        public function actionRegister() // ++++
         {
             $userModel = new User();
             $request = new Request();
@@ -59,6 +61,7 @@
                     $contact['errors'] = $errors;
                 } else {
                     $user = $userModel->save($userData);
+                    return $this->view('admin/login/login');  
                 }
             }
             $this->view('admin/register/register', $contact);
@@ -70,6 +73,14 @@
         //     $this->view('admin/register/register');
         //     // header('location: lodin');
         // }
+        public function actionIndex(array $data = [])
+        {
+            if (!isset($_SESSION['user']['id_user'])) {
+                $this->actionLogin();
+            } else {
+                $this->view('admin/dashboard/dashboard', $data);
+            }
+        }
 
     }
 

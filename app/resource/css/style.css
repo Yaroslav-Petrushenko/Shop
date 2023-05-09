@@ -1,0 +1,155 @@
+.sidebar {
+    /* position: fixed; */
+    /* /* top: 0; */
+    width: 300rem;
+    height: 100vh;
+    /* background-color: #fff; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+    /* transition: right 0.3s ease-in-out; */
+}
+
+.sidebar.open {
+    right: 0;
+    /* Якщо клас .open доданий до .sidebar, то менюшка відкриється */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 24rem;
+    padding-left: 20rem;
+    font-weight: 400;
+}
+
+.sidebar-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: transparent;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+.sidebar-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-toggle.open span:first-of-type {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.sidebar-toggle.open span:nth-of-type(2) {
+    opacity: 0;
+}
+
+.sidebar-toggle.open span:last-of-type {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.sidebar-menu {
+    padding: 20px;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu ul li:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar-menu ul li a {
+    display: block;
+    font-size: 24rem;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.sidebar-menu ul li a:hover {
+    background-color: #eee;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        top: 0;
+        right: -200px;
+        /* При маленькому екрані менюшка за замовчуванням буде схована */
+        width: 200px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s ease-in-out;
+    }
+
+    .sidebar.open {
+        right: 0;
+        /* Якщо клас .open доданий до .sidebar, то менюшка відкриється */
+    }
+
+    .sidebar-header {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+    }
+
+    .sidebar-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .sidebar-toggle {
+        width: 30px;
+        height: 22px;
+    }
+
+    .sidebar-toggle span {
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar-menu {
+        padding: 20px;
+    }
+
+    .sidebar-menu ul li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-menu ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .sidebar-menu ul li a {
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+
+    .sidebar-menu ul li a:hover {
+        background-color: transparent;
+    }
+}

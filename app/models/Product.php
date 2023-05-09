@@ -4,20 +4,20 @@
     use app\vendor\Db;
     use app\vendor\BaseModel;
     use app\models\Price;
-    // require_once 'app/vendor/Db.php';
-    // require_once 'app/vendor/BaseModel.php';
 
     class Product extends BaseModel
     {
         public $table = 'products';
         public $primaryKey = 'id_product';
-        public $fields = ['id_product', 'name', 'description', 'quantity', 'id_status'];
+        public $fields = ['id_product', 'name', 'description', 'main_image', 'quantity', 'id_status'];
+
+        // $sql 
 
         public function getAllProducts()
         {
             $priceModel = new Price();
             $products = $this->getAll();
-            $idsProduct = array_column($product, 'id_product');
+            $idsProduct = array_column($products, 'id_product');
             $prepareProducts = [];
             $prices = $priceModel->getAll(['id_product' => $idsProduct]);
 
