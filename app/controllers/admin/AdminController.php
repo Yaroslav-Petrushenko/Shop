@@ -73,12 +73,15 @@
         //     $this->view('admin/register/register');
         //     // header('location: lodin');
         // }
-        public function actionIndex(array $data = [])
+        public function actionIndex()
         {
-            if (!isset($_SESSION['user']['id_user'])) {
-                $this->actionLogin();
+            if (isset($_SESSION['user']['id_user'])) {
+                $content = [
+                    $this->getBaseURL(),
+                ];
+                $this->view('admin/dashboard/dashboard', $content);
             } else {
-                $this->view('admin/dashboard/dashboard', $data);
+                $this->actionLogin();
             }
         }
 

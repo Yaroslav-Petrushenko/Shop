@@ -1,11 +1,32 @@
-.sidebar {
-    /* position: fixed; */
-    /* /* top: 0; */
+/* .sidebar {
+    position: fixed;
+    top: 0;
     width: 300rem;
     height: 100vh;
-    /* background-color: #fff; */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
-    /* transition: right 0.3s ease-in-out; */
+    background-color: #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+} */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar--open {
+        transform: translateX(0);
+    }
 }
 
 .sidebar.open {
@@ -152,4 +173,57 @@
     .sidebar-menu ul li a:hover {
         background-color: transparent;
     }
+}
+
+table {
+    border-collapse: collapse;
+    max-width: 1000rem;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th,
+td {
+    padding: 8px;
+    font-size: 15rem;
+    color: #000;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.product-table {
+    border-collapse: collapse;
+    width: 100%;
+    /* padding-left: 300rem; */
+    margin-left: 300rem;
+}
+
+.product-table thead {
+    background-color: #f2f2f2;
+}
+
+.product-table th,
+.product-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.product-table td img {
+    max-width: 100px;
+}
+
+.wrapper-dash {
+    width: 100%;
+    /* margin: 0 auto; */
 }

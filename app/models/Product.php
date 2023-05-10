@@ -11,24 +11,42 @@
         public $primaryKey = 'id_product';
         public $fields = ['id_product', 'name', 'description', 'main_image', 'quantity', 'id_status'];
 
-        // $sql 
-
         public function getAllProducts()
         {
             $priceModel = new Price();
-            $products = $this->getAll();
-            $idsProduct = array_column($products, 'id_product');
+
             $prepareProducts = [];
-            $prices = $priceModel->getAll(['id_product' => $idsProduct]);
+
+            $sql = 'SELECT ps.name AS price_status_name, 
+                    prs.name AS product_status_name, 
+                    pr.id_status AS product_status,
+                    p.id_status AS price_status, 
+                    p.price, 
+                    pr.id_product,
+                    pr.name,
+                    pr.description,
+                    pr.main_image,
+                    pr.quantity 
+                    FROM ' . $this->nameDataBase . '.products AS pr
+                    LEFT JOIN ' . $this->nameDataBase . '.statuses AS prs ON prs.id_status = pr.id_status
+                    LEFT JOIN ' . $this->nameDataBase . '.prices AS p ON pr.id_product = p.id_product
+                    LEFT JOIN ' . $this->nameDataBase . '.statuses AS ps ON ps.id_status = p.id_status';
+
+            $stmt = $this->builder()
+                ->query($sql);
+            
+            $products = $stmt->fetchAll();
 
             foreach ($products as $product) {
-                $prepareProducts[$product['id_product']]['product'] = $product;
-                if ($prices[$product['id_product']]) {
-                    $prepareProducts[$product['id_product']]['prices']['price'] = $prices[$product['id_product']]['price'];
-                    $prepareProducts[$product['id_product']]['prices']['status'] = $prices[$product['id_product']]['id_status'];
-                } else {
-                    $prepareProducts[$product['id_product']]['prices']['price'] = [];
-                }
+                $prepareProducts[$product['id_product']]['product'] = $product['id_product'];
+                $prepareProducts[$product['id_product']]['name'] = $product['name'];
+                $prepareProducts[$product['id_product']]['description'] = $product['description'];
+                $prepareProducts[$product['id_product']]['main_image'] = $product['main_image'];
+                $prepareProducts[$product['id_product']]['quantity'] = $product['quantity'];
+                $prepareProducts[$product['id_product']]['product_status_name'] = $product['product_status_name'];
+
+                $prepareProducts[$product['id_product']]['prices'][$product['price_status']]['status'] = $product['price_status_name'];
+                $prepareProducts[$product['id_product']]['prices'][$product['price_status']]['price'] = $product['price'];
             }
 
             return $prepareProducts;

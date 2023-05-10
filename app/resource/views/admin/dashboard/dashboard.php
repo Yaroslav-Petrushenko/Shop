@@ -27,10 +27,16 @@
                 <li><a href="#">Category</a></li>
                 <li><a href="#">Customer</a></li>
                 <li><a href="#">Price</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="<?php $this->getBaseURL('status')?>">Status</a></li>
+                <li><a href="<?= $this->getBaseURL('product')?>">Product</a></li>
+                <li><a href="<?= $this->getBaseURL('status')?>">Status</a></li>
                 <li><a href="#">SubCategory</a></li>
                 <li><a href="#">User</a></li>
             </ul>
         </nav>
     </div>
+
+
+
+<?php //require('app/resource/views/templates/footer.php'); ?>
+
+<script src='/app/resource/js/nav.js'></script>

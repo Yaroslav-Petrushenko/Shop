@@ -1,7 +1,7 @@
 <?php
     $urlRoutes = [
         '' => 'home/index',
-        'admin/admin' => 'admin/admin/index',
+        'admin' => 'admin/admin/index',
         'admin/dashboard' => 'admin/admin/index',
         'admin/register' => 'admin/admin/register',
         'admin/login' => 'admin/admin/login',
