@@ -10,3 +10,17 @@ updatesbtn.forEach(update => {
 })
 
 
+// function toggleNav() {
+//     var navMenu = document.querySelector(".nav-menu-dash");
+//     navMenu.classList.toggle("show");
+
+//     var hamburger = document.querySelector(".hamburger");
+//     hamburger.classList.toggle("open");
+// }
+
+const sidebarToggle = document.querySelector('.hamburger');
+const sidebar = document.querySelector('.nav-menu-dash');
+
+sidebarToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+});

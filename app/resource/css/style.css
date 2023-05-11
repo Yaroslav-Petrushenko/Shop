@@ -1,179 +1,158 @@
-/* .sidebar {
-    position: fixed;
-    top: 0;
-    width: 300rem;
-    height: 100vh;
-    background-color: #fff; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: right 0.3s ease-in-out;
-} */
-.sidebar {
+.header-dash {
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
-    width: 200px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
-    z-index: 100;
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-100%);
-    }
-
-    .sidebar--open {
-        transform: translateX(0);
-    }
-}
-
-.sidebar.open {
     right: 0;
-    /* Якщо клас .open доданий до .sidebar, то менюшка відкриється */
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+.logo-dash h3{
+    padding: 10rem;
+    color: #000;
+    /* background-color: #000; */
+    font-size: 24rem;
+    font-weight: bold;
 }
 
-.sidebar-header {
+.header-section-dash {
+    width: 100%; 
+    padding: 0 12px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
 }
 
-.sidebar-header h3 {
-    margin: 0;
-    font-size: 24rem;
-    padding-left: 20rem;
-    font-weight: 400;
+.logo-dash h3 {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
 }
 
-.sidebar-toggle {
+
+.top-dash {
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    background-color: transparent;
-    width: 25px;
+    align-items: center;
+}
+
+.hamburger {
+    width: 30px;
     height: 20px;
+    position: relative;
     cursor: pointer;
 }
 
-
-.sidebar-toggle span {
+.hamburger span {
     display: block;
+    position: absolute;
+    height: 2px;
     width: 100%;
-    height: 3px;
-    background-color: #fff;
-    transition: transform 0.3s ease-in-out;
+    background: #333;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: all 0.3s ease-in-out;
 }
 
-.sidebar-toggle.open span:first-of-type {
-    transform: translateY(8px) rotate(45deg);
+.hamburger span:nth-child(1) {
+    top: 0;
 }
 
-.sidebar-toggle.open span:nth-of-type(2) {
-    opacity: 0;
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+    top: 9px;
 }
 
-.sidebar-toggle.open span:last-of-type {
-    transform: translateY(-8px) rotate(-45deg);
+.hamburger span:nth-child(4) {
+    top: 18px;
 }
 
-.sidebar-menu {
-    padding: 20px;
+.hamburger.open span:nth-child(1) {
+    top: 9px;
+    width: 0%;
+    left: 50%;
 }
 
-.sidebar-menu ul {
+.hamburger.open span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.hamburger.open span:nth-child(4) {
+    top: 9px;
+    width: 0%;
+    left: 50%;
+}
+
+.nav-menu-dash {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background-color: #000;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-200px);
+}
+
+.nav-menu-dash.show {
+    transform: translateX(0);
+}
+
+.top-menu-dash {
+    flex-direction: column;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding-top: 50rem;
+    /* margin: 20px 0; */
+    /* padding: 0; */
+    align-items: start;
+    
 }
 
-.sidebar-menu ul li {
-    margin-bottom: 10px;
-}
-
-.sidebar-menu ul li:last-child {
-    margin-bottom: 0;
-}
-
-.sidebar-menu ul li a {
+.top-menu-dash li a {
     display: block;
-    font-size: 24rem;
-    padding: 10px;
-    color: #333;
+    padding-bottom: 30rem;
+    padding-left: 30rem;
+    /* padding: 10px; */
     text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
+    color: #fff;
+    font-size: 24rem;
+    transition: all 0.3s ease-in-out;
 }
 
-.sidebar-menu ul li a:hover {
-    background-color: #eee;
-}
 
-@media (max-width: 768px) {
-    .sidebar {
-        position: absolute;
-        top: 0;
-        right: -200px;
-        /* При маленькому екрані менюшка за замовчуванням буде схована */
-        width: 200px;
-        height: 100%;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        transition: right 0.3s ease-in-out;
-    }
-
-    .sidebar.open {
-        right: 0;
-        /* Якщо клас .open доданий до .sidebar, то менюшка відкриється */
-    }
-
-    .sidebar-header {
-        padding: 10px 20px;
+@media screen and (max-width: 768px) {
+    .nav-menu-dash {
+        width: 100%;
+        height: auto;
+        transform: translateX(-100%);
         background-color: #333;
         color: #fff;
-    }
-
-    .sidebar-header h3 {
-        font-size: 1.2rem;
-    }
-
-    .sidebar-toggle {
-        width: 30px;
-        height: 22px;
-    }
-
-    .sidebar-toggle span {
-        width: 100%;
-        height: 3px;
-        background-color: #fff;
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .sidebar-menu {
         padding: 20px;
     }
 
-    .sidebar-menu ul li {
-        margin-bottom: 10px;
+    .nav-menu-dash.show {
+        transform: translateX(0);
     }
 
-    .sidebar-menu ul li:last-child {
-        margin-bottom: 0;
-    }
-
-    .sidebar-menu ul li a {
-        padding: 10px 0;
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-    }
-
-    .sidebar-menu ul li a:hover {
-        background-color: transparent;
+    .top-menu-dash li a {
+        color: #fff;
     }
 }
+
+section {
+    padding: 100rem 0;
+}
+
 
 table {
     border-collapse: collapse;
@@ -198,6 +177,8 @@ tr:hover {
 }
 
 .product-table {
+    padding-top: 100rem;
+    /* margin-top: 100rem; */
     border-collapse: collapse;
     width: 100%;
     /* padding-left: 300rem; */

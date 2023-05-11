@@ -1,6 +1,6 @@
-const sidebarToggle = document.querySelector('.sidebar-toggle');
-const sidebar = document.querySelector('.sidebar');
+// const sidebarToggle = document.querySelector('.sidebar-toggle');
+// const sidebar = document.querySelector('.sidebar');
 
-sidebarToggle.addEventListener('click', () => {
-  sidebar.classList.toggle('sidebar--open');
-});
+// sidebarToggle.addEventListener('click', () => {
+//   sidebar.classList.toggle('sidebar--open');
+// });
