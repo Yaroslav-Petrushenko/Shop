@@ -13,10 +13,12 @@
         {
             $this->getChildProperties($this->getInteriedClassName());
         }
+
         public function builder()
         {
             return Db::conection();
         }
+
         public function getInteriedClassName()
         {
             return get_called_class();
@@ -95,21 +97,9 @@
             $this->builder()
                 ->prepare($sql)
                 ->execute($data);
+
+            return $this->builder()->lastInsertId();
         }
-
-        // public function update(array $data, int $id)
-        // {
-        //     $table = $this->properties['table'];
-        //     $primaryKey = $this->properties['primaryKey'];
-        //     $fields = $this->properties['fields'];
-
-        //     $sql = "";
-        //     foreach ($data as $key => $value) {
-        //         $sql = "UPDATE $this->nameDataBase.$table SET $key = $value WHERE $primaryKey = $id;";
-        //     }
-        //     $this->builder()
-        //         ->query($sql);
-        // }
 
         public function update(int $idStatus, array $data)
         {
@@ -119,11 +109,14 @@
 
             $fields = '';
             foreach ($data as $key => $value) {
-                $fields .= $key . "='" . $value . "',";
+                // $fields .= $key . "='" . $value . "',";
+                $fields .= $key . "='" . str_replace("'", "''", $value) . "',";
+
             }
             $fields = rtrim($fields, ', ');
 
             $sql = 'UPDATE ' . $this->nameDataBase . '.' . $table . ' SET ' . $fields . ' WHERE ' . $primaryKey . ' = ' . $idStatus . '';
+            var_dump($sql);
             $this->builder()
                 ->prepare($sql)
                 ->execute();
@@ -141,6 +134,21 @@
                 ->prepare($sql)
                 ->execute();
         }
+
+        // public function deleteByProduct($productId)
+        // {
+        //     $productId = intval($productId);
+        //     $table = $this->properties['table'];
+        //     $productKey = 'id_product';
+
+        //     $sql = 'DELETE FROM magazine_db.'.$table.' WHERE '.$productKey .' = '.$productId.''; 
+
+        //     $this->builder()
+        //         ->prepare($sql)
+        //         ->execute();
+        // }
+
+
     }
 
 

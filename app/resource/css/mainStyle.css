@@ -1,0 +1,75 @@
+html {
+    font-size: 1px;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 400;
+
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    /* margin: 0; */
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+}
+
+body.lock {
+    overflow: hidden;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.flex {
+    display: flex;
+}
+
+ul {
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    display: inline-block;
+    list-style: none;
+    text-decoration: none;
+}
+
+.overflowX-hidden {
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+    padding: 0;
+    margin: 0;
+}
+
+.flex {
+    display: flex
+}
+
+ul {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none;
+    padding-left: 0
+}
+
+a {
+    display: inline-block;
+    list-style: none;
+    text-decoration: none
+}

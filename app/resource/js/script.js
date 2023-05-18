@@ -18,9 +18,15 @@ updatesbtn.forEach(update => {
 //     hamburger.classList.toggle("open");
 // }
 
-const sidebarToggle = document.querySelector('.hamburger');
-const sidebar = document.querySelector('.nav-menu-dash');
+let sidebarToggle = document.querySelector('.hamburger');
+let sidebarSpan = sidebarToggle.querySelectorAll('span');
+let sidebar = document.querySelector('.nav-menu-dash');
 
+// sidebarToggle.addEventListener('click', () => {
+//     sidebar.classList.toggle('show');
+//     sidebarSpan.classList.toggle('show');
+// });
 sidebarToggle.addEventListener('click', () => {
     sidebar.classList.toggle('show');
+    sidebarSpan.forEach(span => span.classList.toggle('open'));
 });

@@ -19,8 +19,8 @@
 
             $sql = 'SELECT ps.name AS price_status_name, 
                     prs.name AS product_status_name, 
-                    pr.id_status AS product_status,
-                    p.id_status AS price_status, 
+                    pr.id_status AS product_status_id,
+                    p.id_status AS price_status_id, 
                     p.price, 
                     pr.id_product,
                     pr.name,
@@ -38,16 +38,19 @@
             $products = $stmt->fetchAll();
 
             foreach ($products as $product) {
-                $prepareProducts[$product['id_product']]['product'] = $product['id_product'];
                 $prepareProducts[$product['id_product']]['name'] = $product['name'];
                 $prepareProducts[$product['id_product']]['description'] = $product['description'];
                 $prepareProducts[$product['id_product']]['main_image'] = $product['main_image'];
                 $prepareProducts[$product['id_product']]['quantity'] = $product['quantity'];
                 $prepareProducts[$product['id_product']]['product_status_name'] = $product['product_status_name'];
-
-                $prepareProducts[$product['id_product']]['prices'][$product['price_status']]['status'] = $product['price_status_name'];
-                $prepareProducts[$product['id_product']]['prices'][$product['price_status']]['price'] = $product['price'];
+                $prepareProducts[$product['id_product']]['price_status_name'] = $product['price_status_name'];
+                $prepareProducts[$product['id_product']]['price_status_id'] = $product['price_status_id'];
+                $prepareProducts[$product['id_product']]['product_status_id'] = $product['product_status_id'];
+                $prepareProducts[$product['id_product']]['id_product'] = $product['id_product'];
+                $prepareProducts[$product['id_product']]['prices'][] = [$product['product_status_name'] => $product['price']];
+                // $prepareProducts[$product['id_product']]['prices']['status'][] = $product['product_status_name'];
             }
+            
 
             return $prepareProducts;
 

@@ -1,5 +1,9 @@
 <?php
     namespace app\helpers;
+    
+    use app\vendor\DataBase;
+    use app\vendor\Controller;
+
 
     class Request 
     {
@@ -14,6 +18,28 @@
                 }
             }
             return $errors;
+        }
+
+
+        public function saveMedia()
+        {
+            $controller = new Controller();
+    
+            $fileData = $controller->getFiles();
+            $postData = $controller->getPost();
+    
+            $entity['imageName'] = '';
+            if ($fileData['main_image']['error'] === UPLOAD_ERR_OK) {
+                $uploads_dir = 'app/resource/uploads';
+                $type = explode('/', $fileData['main_image']['type']);
+                $tmp_name = $fileData['main_image']['tmp_name'];
+                $extension = $type[1];
+                $fileName = $postData['name'] . '.' . $extension;
+                move_uploaded_file($tmp_name, $uploads_dir . '/' . $fileName);
+                $entity['imageName'] = $fileName;
+            }
+    
+            return $entity['imageName'];
         }
     }
 
